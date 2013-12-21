@@ -22,6 +22,15 @@
 		D55C74E41864DD900024C136 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D55C74C31864DD900024C136 /* UIKit.framework */; };
 		D55C74EC1864DD900024C136 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D55C74EA1864DD900024C136 /* InfoPlist.strings */; };
 		D55C74EE1864DD900024C136 /* GramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D55C74ED1864DD900024C136 /* GramTests.m */; };
+		D55C75011864FC8E0024C136 /* coffee.png in Resources */ = {isa = PBXBuildFile; fileRef = D55C74F81864FC8E0024C136 /* coffee.png */; };
+		D55C75021864FC8E0024C136 /* dessert.png in Resources */ = {isa = PBXBuildFile; fileRef = D55C74F91864FC8E0024C136 /* dessert.png */; };
+		D55C75031864FC8E0024C136 /* drink.png in Resources */ = {isa = PBXBuildFile; fileRef = D55C74FA1864FC8E0024C136 /* drink.png */; };
+		D55C75041864FC8E0024C136 /* junkfood.png in Resources */ = {isa = PBXBuildFile; fileRef = D55C74FB1864FC8E0024C136 /* junkfood.png */; };
+		D55C75051864FC8E0024C136 /* meal-lg.png in Resources */ = {isa = PBXBuildFile; fileRef = D55C74FC1864FC8E0024C136 /* meal-lg.png */; };
+		D55C75061864FC8E0024C136 /* meal-reg.png in Resources */ = {isa = PBXBuildFile; fileRef = D55C74FD1864FC8E0024C136 /* meal-reg.png */; };
+		D55C75071864FC8E0024C136 /* meal-sm.png in Resources */ = {isa = PBXBuildFile; fileRef = D55C74FE1864FC8E0024C136 /* meal-sm.png */; };
+		D55C75081864FC8E0024C136 /* snack.png in Resources */ = {isa = PBXBuildFile; fileRef = D55C74FF1864FC8E0024C136 /* snack.png */; };
+		D55C75091864FC8E0024C136 /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = D55C75001864FC8E0024C136 /* water.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +64,15 @@
 		D55C74E91864DD900024C136 /* GramTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GramTests-Info.plist"; sourceTree = "<group>"; };
 		D55C74EB1864DD900024C136 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D55C74ED1864DD900024C136 /* GramTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GramTests.m; sourceTree = "<group>"; };
+		D55C74F81864FC8E0024C136 /* coffee.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = coffee.png; sourceTree = "<group>"; };
+		D55C74F91864FC8E0024C136 /* dessert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dessert.png; sourceTree = "<group>"; };
+		D55C74FA1864FC8E0024C136 /* drink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drink.png; sourceTree = "<group>"; };
+		D55C74FB1864FC8E0024C136 /* junkfood.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = junkfood.png; sourceTree = "<group>"; };
+		D55C74FC1864FC8E0024C136 /* meal-lg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "meal-lg.png"; sourceTree = "<group>"; };
+		D55C74FD1864FC8E0024C136 /* meal-reg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "meal-reg.png"; sourceTree = "<group>"; };
+		D55C74FE1864FC8E0024C136 /* meal-sm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "meal-sm.png"; sourceTree = "<group>"; };
+		D55C74FF1864FC8E0024C136 /* snack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = snack.png; sourceTree = "<group>"; };
+		D55C75001864FC8E0024C136 /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +138,7 @@
 				D55C74D41864DD900024C136 /* Main_iPad.storyboard */,
 				D55C74D71864DD900024C136 /* ViewController.h */,
 				D55C74D81864DD900024C136 /* ViewController.m */,
+				D55C74F71864FC8E0024C136 /* icons-400 */,
 				D55C74DA1864DD900024C136 /* Images.xcassets */,
 				D55C74C61864DD900024C136 /* Supporting Files */,
 			);
@@ -153,6 +172,22 @@
 				D55C74EA1864DD900024C136 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D55C74F71864FC8E0024C136 /* icons-400 */ = {
+			isa = PBXGroup;
+			children = (
+				D55C74F81864FC8E0024C136 /* coffee.png */,
+				D55C74F91864FC8E0024C136 /* dessert.png */,
+				D55C74FA1864FC8E0024C136 /* drink.png */,
+				D55C74FB1864FC8E0024C136 /* junkfood.png */,
+				D55C74FC1864FC8E0024C136 /* meal-lg.png */,
+				D55C74FD1864FC8E0024C136 /* meal-reg.png */,
+				D55C74FE1864FC8E0024C136 /* meal-sm.png */,
+				D55C74FF1864FC8E0024C136 /* snack.png */,
+				D55C75001864FC8E0024C136 /* water.png */,
+			);
+			path = "icons-400";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,10 +266,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D55C75031864FC8E0024C136 /* drink.png in Resources */,
+				D55C75011864FC8E0024C136 /* coffee.png in Resources */,
 				D55C74D61864DD900024C136 /* Main_iPad.storyboard in Resources */,
 				D55C74DB1864DD900024C136 /* Images.xcassets in Resources */,
+				D55C75081864FC8E0024C136 /* snack.png in Resources */,
+				D55C75091864FC8E0024C136 /* water.png in Resources */,
 				D55C74D31864DD900024C136 /* Main_iPhone.storyboard in Resources */,
+				D55C75021864FC8E0024C136 /* dessert.png in Resources */,
 				D55C74CA1864DD900024C136 /* InfoPlist.strings in Resources */,
+				D55C75041864FC8E0024C136 /* junkfood.png in Resources */,
+				D55C75051864FC8E0024C136 /* meal-lg.png in Resources */,
+				D55C75071864FC8E0024C136 /* meal-sm.png in Resources */,
+				D55C75061864FC8E0024C136 /* meal-reg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
