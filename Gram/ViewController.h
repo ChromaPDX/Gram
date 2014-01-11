@@ -11,3 +11,12 @@
 @interface ViewController : UIViewController <UIScrollViewDelegate>
 
 @end
+
+@interface NSMutableDictionary (GramCategory)
+-(NSArray*) sortedValues;
+-(NSArray*) sortedKeys;
+@end
+
+@interface UIScrollView (CurrentPage)
+-(int) currentPage;
+@end

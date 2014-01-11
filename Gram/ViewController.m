@@ -13,6 +13,8 @@
     float width, height;
     UIScrollView *scrollView;
     float margin;
+    UILabel *dateLabel;
+    bool dateFader;
 }
 
 @end
@@ -39,6 +41,7 @@
     }
     NSLog(@"CONSUMPTIONS (%d): %@",[consumptions count],consumptions);
 
+    NSLog(@"%@",[consumptions sortedValues]);
     // build interface
     
     for(int i = 0; i < 9; i++){
@@ -53,6 +56,12 @@
         [button.layer setCornerRadius:width/6.-margin];
         [self.view addSubview:button];
     }
+    
+    dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, margin, width, (height-width)*.5 )];
+    [dateLabel setFont:[UIFont boldSystemFontOfSize:48]];
+    [dateLabel setTextAlignment:NSTextAlignmentCenter];
+    [self.view addSubview:dateLabel];
+    dateFader = false;
    
     scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, (height-width)*.5 + width, width, (height-width)*.5)];
     [scrollView setDelegate:self];
@@ -62,15 +71,41 @@
     [self refreshScrollView];
 }
 
+-(void) scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(!dateFader){
+        dateFader = true;
+        [dateLabel setText:@""];
+    }
+}
+//-(void) scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+//    NSLog(@"scrollViewWillBeginDragging");
+//}
+//-(void) scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset{
+//    NSLog(@"scrollViewWillEndDragging");
+//}
+-(void) scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+    NSLog(@"scrollViewDidEndScrollingAnimation");
+    dateFader = false;
+}
+-(void) scrollViewDidEndDecelerating:(UIScrollView *)scroll{
+    dateFader = false;
+    [dateLabel setText:[self formattedDate:[[consumptions sortedKeys] objectAtIndex:[scroll currentPage]]]];
+}
+
 -(void)refreshScrollView{
-    [scrollView setContentSize:CGSizeMake(width*[consumptions count], (height-width)*.5)];
-    for(int i = 0; i < [consumptions count]; i++){
-        UIImage *graph = [self getImage:[[consumptions allValues] objectAtIndex:i]];
+    [[scrollView subviews] makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    NSArray *sortedConsumptions = [consumptions sortedValues];
+    [scrollView setContentSize:CGSizeMake(width*[sortedConsumptions count], (height-width)*.5)];
+    for(int i = 0; i < [sortedConsumptions count]; i++){
+        UIImage *graph = [self getImage:[sortedConsumptions objectAtIndex:i]];
         UIImageView *graphView = [[UIImageView alloc] initWithFrame:CGRectMake(width*(i), 0, width, (height-width)*.5)];
         [graphView setImage:graph];
         [scrollView addSubview:graphView];
     }
-    [scrollView scrollRectToVisible:CGRectMake([consumptions count]*width, 0, width, (height-width)*.5) animated:YES];
+    if([sortedConsumptions count]){
+        [scrollView scrollRectToVisible:CGRectMake(([sortedConsumptions count]-1)*width, 0, width, (height-width)*.5) animated:YES];
+        [dateLabel setText:[self formattedDate:[[consumptions sortedKeys] objectAtIndex:[sortedConsumptions count]-1]]];
+    }
 }
 
 -(void) buttonPress:(UIButton*)sender{
@@ -110,6 +145,14 @@
     return [dateFormatter stringFromDate:currDate];
 }
 
+-(NSString*)formattedDate:(NSString*)date{
+    NSArray *months = @[@"Jan", @"Feb", @"Mar", @"Apr", @"May", @"Jun", @"Jul", @"Aug", @"Sep", @"Oct", @"Nov", @"Dec"];
+    NSString *year = [date substringToIndex:4];
+    int month = [[date substringWithRange:NSMakeRange(5, 2)] integerValue]-1;
+    NSString *day = [date substringWithRange:NSMakeRange(8, 2)];
+    return [NSString stringWithFormat:@"%@ %@ %@",months[month], day, year];
+}
+
 -(UIImage*)getImage:(NSArray*)data
 {
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(width, (height-width)*.5), NO, 1.0);
@@ -145,4 +188,33 @@
     // Dispose of any resources that can be recreated.
 }
 
+@end
+
+@implementation NSMutableDictionary (GramCategory)
+
+-(NSArray*) sortedValues{
+    if([self count]){
+    NSArray *keys = [[self allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    NSMutableArray* sorted = [NSMutableArray array];
+    for(NSString *key in keys)
+        [sorted addObject:[self objectForKey:key]];
+    return sorted;
+    }
+    else return [NSArray array];
+}
+
+-(NSArray*) sortedKeys{
+    if([self count])
+        return [[self allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    else
+        return [NSArray array];
+}
+
+@end
+
+@implementation UIScrollView (CurrentPage)
+-(int) currentPage{
+    CGFloat pageWidth = self.frame.size.width;
+    return floor((self.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+}
 @end
